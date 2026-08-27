@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AquaSentinel NER - community water risk early warning prototype" />
+  <title>AquaSentinel NER | Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="nav-wrap">
+      <nav class="navbar container" aria-label="Main navigation">
+        <a href="#home" class="brand"><span class="brand-mark">⌁</span><span>AquaSentinel <b>NER</b></span></a>
+        <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><i></i><i></i><i></i></button>
+        <div class="nav-links">
+          <a class="active" href="#home" data-nav="home">Home</a><a href="#area" data-nav="area">Check Area</a><a href="#report" data-nav="report">Report</a><a href="#map" data-nav="map">Risk Map</a><a href="#how" data-nav="how">How It Works</a>
+          <button class="language" id="languageBtn" aria-label="Change language">English <span>|</span> தமிழ்</button>
+          <a href="#report" class="button small nav-report">Report a Problem</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home" class="hero section container">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="pulse-dot"></span><span data-i18n="demo">DEMO MODE</span></div>
+          <h1>See water risk <em>before</em> it spreads.</h1>
+          <p>AquaSentinel NER connects water, community and health signals to identify potential risks earlier.</p>
+          <div class="hero-actions"><a class="button" href="#area" data-i18n="check">CHECK MY AREA</a><a class="button ghost" href="#report" data-i18n="report">REPORT A PROBLEM</a></div>
+          <button id="runDemo" class="demo-trigger"><span class="play-icon">▶</span> <span data-i18n="run">RUN DEMO</span></button>
+        </div>
+        <div class="hero-visual reveal" aria-label="Animated water risk illustration">
+          <div class="radar-circle c1"></div><div class="radar-circle c2"></div><div class="radar-circle c3"></div>
+          <div class="water-orb"><span class="wave w1"></span><span class="wave w2"></span><span class="wave w3"></span><div class="orb-core">💧</div></div>
+          <div class="signal-card high float-a"><span class="mini-pin">●</span><div><small>COMMUNITY SIGNAL</small><strong>High risk</strong></div></div>
+          <div class="signal-card good float-b"><span>✓</span><div><small>WATER CHECK</small><strong>Received</strong></div></div>
+          <span class="data-particle p1"></span><span class="data-particle p2"></span><span class="data-particle p3"></span>
+        </div>
+      </section>
+
+      <section class="trust container reveal">
+        <div><strong class="counter" data-target="24">0</strong><span>COMMUNITIES CONNECTED</span></div><div><strong class="counter" data-target="48">0</strong><span>REPORTS CHECKED</span></div><div><strong class="counter" data-target="3">0</strong><span>EARLY WARNINGS</span></div>
+      </section>
+
+      <section id="area" class="section area-section">
+        <div class="container two-col">
+          <div class="section-title reveal"><span class="kicker">01 / COMMUNITY VIEW</span><h2 data-i18n="areaTitle">Check Your Area</h2><p>See a simple, current picture of community water-risk signals.</p><div class="location-chip">📍 <span>Location:</span> <b>Dibrugarh, Assam</b></div></div>
+          <article class="risk-card high-risk reveal" id="riskCard">
+            <div class="risk-top"><span class="risk-ring"><i></i></span><div><small>POTENTIAL RISK</small><h3>HIGH RISK</h3></div><span class="updated">Updated<br><b>Today</b></span></div>
+            <p>Potential water-borne disease signals detected.</p>
+            <div class="signal-grid"><div><b>12</b><span>Water Reports</span></div><div><b>8</b><span>Health Signals</span></div><div><b>Yes</b><span>Environmental</span></div></div>
+            <button class="button full" id="viewDetails">VIEW DETAILS <span>→</span></button>
+          </article>
+        </div>
+      </section>
+
+      <section id="map" class="section container">
+        <div class="section-heading reveal"><div><span class="kicker">02 / GIS COMMUNITY RISK VIEW</span><h2>Risk Map</h2><p>Tap a community to see its demo evidence.</p></div><div class="legend"><span><i class="safe"></i>SAFE</span><span><i class="watch"></i>WATCH</span><span><i class="danger"></i>HIGH RISK</span></div></div>
+        <div class="map-wrap reveal">
+          <div class="map-grid"></div><div class="river r-one"></div><div class="river r-two"></div><span class="map-label label-one">Brahmaputra</span>
+          <button class="map-marker high selected" style="--x:55%;--y:48%" data-place="Dibrugarh"><i></i><span>Dibrugarh</span></button>
+          <button class="map-marker safe" style="--x:25%;--y:30%" data-place="Chabua"><i></i><span>Chabua</span></button>
+          <button class="map-marker watch" style="--x:74%;--y:30%" data-place="Naharkatiya"><i></i><span>Naharkatiya</span></button>
+          <button class="map-marker safe" style="--x:32%;--y:69%" data-place="Tinsukia"><i></i><span>Tinsukia</span></button>
+          <button class="map-marker watch" style="--x:72%;--y:72%" data-place="Moran"><i></i><span>Moran</span></button>
+          <aside class="community-panel" id="communityPanel"><button class="close-panel" aria-label="Close">×</button><span class="panel-risk high">HIGH RISK</span><h3>Dibrugarh</h3><p>Potential risk needs verification.</p><div class="panel-data"><span>Water Reports <b>12</b></span><span>Health Signals <b>8</b></span><span>Environmental <b>Yes</b></span></div><button class="text-button" id="viewCommunity">VIEW COMMUNITY <span>→</span></button></aside>
+        </div>
+      </section>
+
+      <section id="report" class="section report-section">
+        <div class="container report-layout">
+          <div class="section-title reveal"><span class="kicker">03 / COMMUNITY REPORT</span><h2 data-i18n="reportTitle">Report a Water Problem</h2><p>Share what you notice. It only takes a moment.</p><div class="report-steps"><span class="on">1</span><i></i><span>2</span><i></i><span>3</span><i></i><span>4</span></div></div>
+          <form class="report-form reveal" id="reportForm">
+            <div class="form-stage stage-one active"><label>1. What did you notice?</label><div class="issue-grid"><button type="button" data-issue="Dirty Water">💧<span>Dirty Water</span></button><button type="button" data-issue="Bad Smell">〰<span>Bad Smell</span></button><button type="button" data-issue="Colour Change">◒<span>Colour Change</span></button><button type="button" data-issue="Flooding">≋<span>Flooding</span></button><button type="button" data-issue="Waste / Pollution">♻<span>Waste / Pollution</span></button><button type="button" data-issue="Other">＋<span>Other</span></button></div><button type="button" class="button next-stage">CONTINUE</button></div>
+            <div class="form-stage stage-two"><label>2. Add a photo</label><button type="button" class="upload-box"><span>▣</span><b>TAKE / UPLOAD PHOTO</b><small>Demo only · no file is uploaded</small></button><button type="button" class="button next-stage">CONTINUE</button></div>
+            <div class="form-stage stage-three"><label>3. Your location</label><div class="location-box"><span>📍</span><div><b>Dibrugarh, Assam</b><small>Demo location</small></div><i>✓</i></div><button type="button" class="button next-stage">USE MY LOCATION</button></div>
+            <div class="form-stage stage-four"><label>4. Tell us what happened</label><button type="button" class="voice-button" id="voiceButton"><span class="mic">🎤</span><span class="voice-waves"><i></i><i></i><i></i></span><b> SPEAK</b></button><input type="text" aria-label="Report details" placeholder="Or type a few words..." /><button type="button" class="health-link" id="healthOpen">+ Are people feeling sick?</button><button type="submit" class="button full">SUBMIT REPORT <span>→</span></button></div>
+          </form>
+        </div>
+      </section>
+
+      <section id="how" class="section how-section">
+        <div class="container"><div class="section-heading centered reveal"><span class="kicker">04 / SIMPLE BY DESIGN</span><h2>How It Works</h2><p>Information flows from the community to the people who can act.</p></div><div class="workflow" id="workflow">
+          <article><b>1</b><span>💧</span><h3>DATA COLLECTION</h3><p>Water + Community + Health</p></article><i></i><article><b>2</b><span>✓</span><h3>DATA CHECK</h3><p>Check the information</p></article><i></i><article><b>3</b><span>⌁</span><h3>RISK ANALYSIS</h3><p>AI + Rules</p></article><i></i><article><b>4</b><span>⌖</span><h3>GIS MAP</h3><p>Find high-risk areas</p></article><i></i><article><b>5</b><span>◉</span><h3>VERIFICATION</h3><p>Human review</p></article><i></i><article><b>6</b><span>⚠</span><h3>EARLY WARNING</h3><p>Alert the community</p></article><i></i><article><b>7</b><span>→</span><h3>TARGETED ACTION</h3><p>Respond where needed</p></article><i></i><article><b>8</b><span>↻</span><h3>FOLLOW-UP</h3><p>Track the situation</p></article>
+        </div></div>
+      </section>
+
+      <section class="section innovation"><div class="container"><div class="section-heading centered reveal"><span class="kicker">05 / ONE CLEAR PICTURE</span><h2>Why AquaSentinel NER?</h2><p>It brings together simple local evidence before a response is needed.</p></div><div class="evidence-grid"><article class="reveal"><span>💧</span><h3>WATER EVIDENCE</h3><p>Local water observations</p></article><article class="reveal"><span>👥</span><h3>COMMUNITY EVIDENCE</h3><p>Reports and observations</p></article><article class="reveal"><span>🧑‍⚕️</span><h3>HEALTH SIGNALS</h3><p>Reported symptoms and surveillance</p></article><article class="reveal"><span>🌧️</span><h3>ENVIRONMENTAL CONTEXT</h3><p>Rainfall and environmental conditions</p></article></div><div class="evidence-flow reveal"><span>WATER</span><b>+</b><span>COMMUNITY</span><b>+</b><span>HEALTH</span><b>+</b><span>ENVIRONMENT</span><i>↓</i><strong>COMMUNITY RISK</strong></div></div></section>
+
+      <section class="section container verification"><div class="verify-content reveal"><span class="kicker">06 / RESPONSIBLE DECISION-MAKING</span><h2>Human verification<br>comes first.</h2><p>AI supports decision-making. Final verification remains with responsible health personnel.</p><div class="verify-path"><span>AI / RULE-BASED<br>ANALYSIS</span><i>↓</i><span class="warn">POTENTIAL RISK</span><i>↓</i><span class="human">HUMAN<br>VERIFICATION</span><i>↓</i><span>EARLY WARNING</span></div></div><div class="alert-demo reveal"><div class="alert-head"><span>⚠</span><div><small>HIGH-RISK SIGNAL</small><h3>Dibrugarh, Assam</h3></div></div><p>Potential water-borne disease risk detected.</p><div class="evidence-line"><b>Evidence:</b> Water + Community + Health</div><div class="status-line"><span>Status</span><b>VERIFICATION REQUIRED</b></div><button class="button full" id="viewResponse">VIEW RESPONSE <span>→</span></button><div class="response-panel" id="responsePanel"><b>Response ready</b><span>Water testing and field verification recommended.</span></div></div></section>
+
+      <section class="section response-section"><div class="container"><div class="section-heading reveal"><div><span class="kicker">07 / ACT WHERE IT MATTERS</span><h2>Targeted Response</h2><p>Simple actions, recommended for the Dibrugarh demo signal.</p></div></div><div class="action-grid"><article class="reveal"><span>💧</span><h3>Water Testing</h3><button class="prioritize">PRIORITIZE</button></article><article class="reveal"><span>📢</span><h3>Community Awareness</h3><button class="prioritize">PRIORITIZE</button></article><article class="reveal"><span>🧑‍⚕️</span><h3>Health Team Visit</h3><button class="prioritize">PRIORITIZE</button></article><article class="reveal"><span>🔎</span><h3>Field Verification</h3><button class="prioritize">PRIORITIZE</button></article></div></div></section>
+
+      <section class="section followup container"><div class="follow-card reveal"><div><span class="kicker">08 / FOLLOW-UP</span><h2>Dibrugarh Community</h2><p>Risk status can be monitored after intervention.</p></div><div class="risk-timeline"><div class="timeline-line"></div><div class="timeline-step high"><i>●</i><b>HIGH</b><small>Now</small></div><div class="timeline-step watch"><i>●</i><b>WATCH</b><small>After checks</small></div><div class="timeline-step safe"><i>●</i><b>SAFE</b><small>After action</small></div></div></div></section>
+    </main>
+    <footer><div class="container"><a href="#home" class="brand"><span class="brand-mark">⌁</span><span>AquaSentinel <b>NER</b></span></a><span>Frontend prototype · Demo data only</span><span>SIH 2026</span></div></footer>
+  </div>
+
+  <div class="modal-backdrop" id="successModal" aria-hidden="true"><section class="success-modal"><button class="modal-close" aria-label="Close">×</button><div class="success-check">✓</div><span class="kicker">DEMO REPORT</span><h2>REPORT RECEIVED</h2><p>Thank you. Your report has been recorded for review.</p><div class="report-id"><span>Report ID:</span><b>AS-DEMO-001</b><small>PENDING VERIFICATION</small></div><a href="#area" class="button full close-success">CHECK AREA RISK <span>→</span></a></section></div>
+  <div class="modal-backdrop" id="healthModal" aria-hidden="true"><section class="health-modal"><button class="modal-close" aria-label="Close">×</button><span class="kicker">OPTIONAL HEALTH SIGNAL</span><h2>Are people feeling sick?</h2><p>Choose any signs you have noticed.</p><div class="symptom-grid"><button>Diarrhoea</button><button>Vomiting</button><button>Fever</button><button>Stomach Pain</button><button>Weakness</button></div><label>How many people are affected?</label><div class="quantity"><button class="qty-minus">−</button><b id="qtyValue">3</b><button class="qty-plus">+</button></div><button class="button full close-health">CONTINUE</button></section></div>
+  <div class="demo-overlay" id="demoOverlay"><div class="demo-box"><span class="pulse-dot"></span><small>LIVE DEMO SEQUENCE</small><h2 id="demoText">Preparing demo...</h2><div class="demo-progress"><i></i></div><button id="closeDemo">Skip demo</button></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
+
